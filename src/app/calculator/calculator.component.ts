@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms'
+
 
 @Component({
   selector: 'app-calculator',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor() { }
+	salaryForm;
 
-  ngOnInit(): void {
-  }
+  	constructor(private formBuilder: FormBuilder) {
+  		this.salaryForm = this.formBuilder.group({
+  			base: '',
+  			workDays: '',
+  			payDays: '',
+  			coff: '',
+  			premium: ''
+  			});
+   	}
 
+
+  	ngOnInit(): void {
+  	}
+
+  	
 }

@@ -1,1 +1,37 @@
-<p>calculator works!</p>
+<form class="postcard" [formGroup]="salaryForm">
+	<div class="form-row">
+		<label for="base">
+  			Оклад
+		</label>
+    	<input id="base" type="text" formControlName="base">
+  	</div>
+  	<div class="form-row">
+		<label for="workDays">
+  			Число рабочих дней
+		</label>
+    	<input id="workDays" type="text" formControlName="workDays">
+  	</div>
+  	<div class="form-row">
+		<label for="payDays">
+  			Расчетный период
+		</label>
+    	<input id="payDays" type="text" formControlName="payDays">
+  	</div>
+	<div class="form-row">
+		<label for="coff">
+  			Коэффициент
+		</label>
+    	<input id="coff" type="text" formControlName="coff">
+  	</div>
+  	<div class="form-row">
+		<label for="premium">
+  			Надбавка
+		</label>
+    	<input id="premium" type="text" formControlName="premium">
+  	</div>
+  	
+  	<div class="form-row">
+		<button class="button" type="submit">Расчитать</button>
+  	</div>
+	
+</form>
