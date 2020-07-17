@@ -43,3 +43,6 @@ body {background: #F5E9D9;}
   transition: 1s cubic-bezier(.165, .84, .44, 1);
 }
 .form-row input[type=submit]:hover {background: #C42061;}
+.alert {
+  color: rgb(255, 0, 0);
+}
