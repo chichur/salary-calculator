@@ -40,7 +40,18 @@ export class CalculatorComponent implements OnInit {
   		var result = (((data.base * data.coff) + Number(data.premium)) / data.payDays) * data.workDays;
   		// присваиваем результат
   		this.result = result.toFixed(2) + " руб.";
-  		this.httpService.addHistory(this);
+      console.log(this);
+      var sendData = [this.salaryForm.controls.base.value,
+                       this.salaryForm.controls.workDays.value,
+                       this.salaryForm.controls.payDays.value,
+                       this.salaryForm.controls.coff.value,
+                       this.result]
+  		this.httpService.addHistory(sendData).subscribe(value =>{
+    // value - результат
+},
+error => {
+    // error - объект ошибки
+});;
   	}
     
   	get base() { return this.salaryForm.get('base');  }

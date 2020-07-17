@@ -21,10 +21,23 @@ export class HttpService {
   	constructor(private http: HttpClient) { }
 
   	/** POST-запрос отправки на сервер результата расчета*/
-	addHistory(result: CalculatorComponent): Observable<CalculatorComponent> {
-		return this.http.post<CalculatorComponent>(this.heroesUrl, result, this.httpOptions).pipe();
+	addHistory(result: any[]): Observable<CalculatorComponent> {
 		console.log('catchError');
+		return this.http.post<CalculatorComponent>(this.heroesUrl, result, this.httpOptions)
+		.pipe(catchError(this.handleError<CalculatorComponent>('deleteHero')));
+		
 	}
 
-  	
+  	private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+
+  }
 }
