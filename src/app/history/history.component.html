@@ -1,1 +1,28 @@
-<p>history works!</p>
+<table>
+	<tr>
+		<th colspan="3">Информация о пользователе</th>
+    	<th colspan="6">Данные расчета</th>
+	</tr>
+	<tr>
+    	<th>Время</th>
+    	<th>IP-адрес</th>
+    	<th>Браузер</th>
+    	<th>Оклад</th>
+    	<th>Число рабочих дней</th>
+    	<th>Расчетный период</th>
+    	<th>Коэффициент</th>
+    	<th>Надбавка</th>
+    	<th>Результат</th>
+  	</tr>
+  <tr *ngFor="let record of records">
+    <td>{{ record.date }}</td>
+    <td>{{ record.ip }}</td>
+    <td>{{ record.user_agent }}</td>
+    <td>{{ record.base }}</td>
+    <td>{{ record.work_days }}</td>
+    <td>{{ record.pay_days }}</td>
+    <td>{{ record.coff }}</td>
+    <td>{{ record.premium }}</td>
+    <td>{{ record.result }}</td>
+  </tr>
+</table>

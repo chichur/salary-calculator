@@ -9,7 +9,7 @@
   	</div>
 	<div class="form-row">
 		<label for="base">
-  			Оклад
+  			Оклад, руб.
 		</label>
     	<input id="base" type="text" formControlName="base" required>
   	</div>
@@ -37,7 +37,7 @@
   	</div>
   	<div class="form-row">
 		<label for="payDays">
-  			Расчетный период
+  			Расчетный период, дни
 		</label>
     	<input id="payDays" type="text" formControlName="payDays">
   	</div>
@@ -65,13 +65,13 @@
   	</div>
   	<div class="form-row">
 		<label for="premium">
-  			Надбавка
+  			Надбавка, руб.
 		</label>
     	<input id="premium" type="text" formControlName="premium">
   	</div>
   	
   	<div class="form-row">
-		<button class="button" type="submit">Расчитать</button>
+		<button class="button" type="submit" [disabled]="salaryForm.invalid">Расчитать</button>
   	</div>
 
   	<div class="form-row">

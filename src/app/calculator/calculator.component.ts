@@ -11,8 +11,8 @@ import { HttpService } from '../http.service';
 })
 export class CalculatorComponent implements OnInit {
 
-	salaryForm; // Форма расчета
-	result; // результат вычисления
+	  salaryForm; // Форма расчета
+	  result; // результат вычисления
 
   	constructor(private formBuilder: FormBuilder, private httpService: HttpService) {
   		// регулярное выражение для чисел с плавающей точкой
@@ -29,7 +29,6 @@ export class CalculatorComponent implements OnInit {
   			}, );
    	}
 
-
   	ngOnInit(): void {
   		
   	}
@@ -45,15 +44,17 @@ export class CalculatorComponent implements OnInit {
                        this.salaryForm.controls.workDays.value,
                        this.salaryForm.controls.payDays.value,
                        this.salaryForm.controls.coff.value,
+                       this.salaryForm.controls.premium.value,
                        this.result]
   		this.httpService.addHistory(sendData).subscribe(value =>{
-    // value - результат
-},
-error => {
-    // error - объект ошибки
-});;
+            // value - результат
+        },
+        error => {
+            // error - объект ошибки
+        });;
   	}
     
+    // геттеры для шаблона
   	get base() { return this.salaryForm.get('base');  }
   	get workdays() { return this.salaryForm.get('workDays'); }
   	get paydays() { return this.salaryForm.get('payDays'); }
