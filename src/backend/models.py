@@ -14,7 +14,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ip_adress = db.Column(db.String(80), unique=False, nullable=False)
     user_agent = db.Column(db.String(120), nullable=False)
-
+    histories = db.relationship('History', backref="user", lazy=True)
 
 # модель истории расчетов
 class History(db.Model):

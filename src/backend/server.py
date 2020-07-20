@@ -14,17 +14,20 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///salary.db'
 db = SQLAlchemy(app)
 
-# форма ответа, заголовки обязательны
-resp = Flask.response_class()
-resp.headers['Access-Control-Allow-Origin'] = '*'
-resp.headers['Access-Control-Allow-Headers'] = '*'
+
 
 
 @app.route('/api/calculator', methods=['GET', 'POST', 'OPTIONS'])
 def api():
     if request.method == 'OPTIONS':
+        resp = Flask.response_class()
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Headers'] = '*'
         return resp
     if request.method == 'POST':
+        resp = Flask.response_class()
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Headers'] = '*'
         data = request.json # получаем данные
 
         # получаем или создаем нового пользователя
@@ -32,8 +35,7 @@ def api():
                     user_agent=str(parse(str(request.user_agent))))
 
         # вставляем запись истории с данным пользователем
-        history = History(user_id=user.id,
-                          date=datetime.datetime.now(),
+        history = History(date=datetime.datetime.now(),
                           base=float(data[0]),
                           work_days=int(data[1]),
                           pay_days=int(data[2]),
@@ -42,11 +44,15 @@ def api():
                           result=str(data[5]))
 
         # сохраняем в БД
+        user.histories.append(history)
         db.session.add(user)
         db.session.add(history)
         db.session.commit()
         return resp
     if request.method == 'GET':
+        resp = Flask.response_class()
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Headers'] = '*'
 
         # запрос истории расчетов сортированный по дате
         query = db.session.query(History, User).join(User, History.user_id == User.id)\
