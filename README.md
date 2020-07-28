@@ -14,4 +14,4 @@ Python 3.8.3, Flask 1.1.2, Flask-SQLAlchemy 2.4.4
 
 SQLite 3.32.3
 
-https://salary-calculator-bfbea.web.app/calculator
+https://salary-calculator-bfbea.web.app
